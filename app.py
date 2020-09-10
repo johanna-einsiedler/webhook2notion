@@ -31,7 +31,7 @@ def createTask(token, collectionURL, content):
     row.task = content
 
 
-def createReceipt(token, url, task, date, category, prio, time, message_url):
+def createReceipt(token, url, task, date, category, prio, time, content):
     # notion
     client = NotionClient(token)
     cv = client.get_collection_view(url)
@@ -39,7 +39,7 @@ def createReceipt(token, url, task, date, category, prio, time, message_url):
     row.task = task
     row.category = category
     row.prio = prio
-    row.url = message_url
+    row.content = content
     row.time = time
     row.date = date
 
@@ -78,7 +78,7 @@ def tasks():
 def gmailReceipt():
     task = request.args.get('task')
     date = request.args.get('date')
-    message_url = request.args.get('url')
+    content = request.args.get('content')
     email = request.args.get('email')
     category = request.args.get('category')
     prio = request.args.get('prio')
