@@ -76,13 +76,13 @@ def tasks():
 def gmailReceipt():
     task = request.args.get('task')
     date = request.args.get('date')
-    message_url = request.args.get('url')
+    url = request.args.get('url')
     email = request.args.get('email')
     category = request.args.get('category')
     prio = request.args.get('prio')
     time = request.args.get('time')
     token_v2 = os.environ.get("TOKEN")
-    createReceipt(token_v2, url, product, content, task, date)
+    createReceipt(token_v2, url, email, prio, time, content, task, date)
     return f'added {product} receipt to Notion'
 
 
