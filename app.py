@@ -86,7 +86,7 @@ def gmailReceipt():
     url = os.environ.get("URL")
     token_v2 = os.environ.get("TOKEN")
     createReceipt(token_v2, url, task, date, category, prio, time, message_url)
-    return f'added {product} receipt to Notion'
+    return f'added {task} task to Notion'
 
 
 @app.route('/createemail', methods=['GET'])
