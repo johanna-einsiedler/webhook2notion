@@ -31,7 +31,7 @@ def createTask(token, collectionURL, content):
     row.task = content
 
 
-def createReceipt(token, collectionURL, task, date, category, prio, time, url, date):
+def createReceipt(token, collectionURL, task, date, category, prio, time, url):
     # notion
     client = NotionClient(token)
     cv = client.get_collection_view(collectionURL)
