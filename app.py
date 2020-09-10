@@ -31,14 +31,16 @@ def createTask(token, collectionURL, content):
     row.task = content
 
 
-def createReceipt(token, collectionURL, product, content, url, date):
+def createReceipt(token, collectionURL, task, date, category, prio, time, url, date):
     # notion
     client = NotionClient(token)
     cv = client.get_collection_view(collectionURL)
     row = cv.collection.add_row()
-    row.product = product
-    row.content = content
+    row.task = task
+    row.category = category
+    row.prio = prio
     row.url = url
+    row.time = time
     row.date = date
 
 
