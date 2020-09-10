@@ -31,15 +31,15 @@ def createTask(token, collectionURL, content):
     row.task = content
 
 
-def createReceipt(token, collectionURL, task, date, category, prio, time, url):
+def createReceipt(token, url, task, date, category, prio, time, message_url):
     # notion
     client = NotionClient(token)
-    cv = client.get_collection_view(collectionURL)
+    cv = client.get_collection_view(url)
     row = cv.collection.add_row()
     row.task = task
     row.category = category
     row.prio = prio
-    row.url = url
+    row.url = message_url
     row.time = time
     row.date = date
 
@@ -78,13 +78,14 @@ def tasks():
 def gmailReceipt():
     task = request.args.get('task')
     date = request.args.get('date')
-    url = request.args.get('url')
+    message_url = request.args.get('url')
     email = request.args.get('email')
     category = request.args.get('category')
     prio = request.args.get('prio')
     time = request.args.get('time')
+    url = os.environ.get("URL")
     token_v2 = os.environ.get("TOKEN")
-    createReceipt(token_v2, url, email, prio, time, category, task, date)
+    createReceipt(token_v2, url, email, prio, time, category, task, message_url, date)
     return f'added {product} receipt to Notion'
 
 
